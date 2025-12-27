@@ -1,79 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Theory of Relativity Visualized</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Roboto', sans-serif; background: linear-gradient(120deg,#1f1c2c,#928dab); color:#fff; line-height:1.6; overflow-x:hidden; }
-    header { text-align:center; padding:50px 20px; background: rgba(0,0,0,0.3);}
-    header h1 { font-size:3rem; margin-bottom:10px;}
-    header p { font-size:1.2rem; max-width:600px; margin:auto;}
-    section { padding:60px 20px; text-align:center; position:relative;}
-    section h2 { font-size:2.5rem; margin-bottom:20px;}
-    section p { max-width:700px; margin:auto; font-size:1.1rem; margin-bottom:40px;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Theory of Relativity</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Roboto', sans-serif; background:#0a0a1a; color:#fff; overflow-x:hidden; }
+  header { text-align:center; padding:80px 20px; background: linear-gradient(to bottom, #0a0a1a, #1b1b3a); }
+  header h1 { font-size:3rem; margin-bottom:20px; }
+  header p { font-size:1.2rem; max-width:600px; margin:auto; line-height:1.5; }
+  .btn { padding:12px 25px; background:#ff6347; border:none; border-radius:25px; color:#fff; font-size:1rem; cursor:pointer; margin-top:20px; transition:0.3s; }
+  .btn:hover { background:#ff8566; }
+  
+  section { padding:80px 20px; text-align:center; }
+  section h2 { font-size:2.5rem; margin-bottom:20px; }
+  section p { max-width:700px; margin:auto; font-size:1.1rem; margin-bottom:40px; line-height:1.5; }
 
-    .clock-container { display:flex; justify-content:center; gap:50px; flex-wrap:wrap;}
-    .clock { background: rgba(255,255,255,0.1); border-radius:50%; width:150px; height:150px; position:relative; display:flex; align-items:center; justify-content:center; cursor:pointer; transition: transform 0.3s ease;}
-    .clock:hover { transform: scale(1.1);}
-    .hand { position:absolute; width:2px; background:#fff; transform-origin: bottom center; }
-    .hour { height:40px;}
-    .minute { height:60px;}
-    .second { height:70px; background:#ff6347;}
+  .clock-container { display:flex; justify-content:center; gap:50px; flex-wrap:wrap; margin-top:40px; }
+  .clock { background: rgba(255,255,255,0.1); border-radius:50%; width:150px; height:150px; position:relative; display:flex; align-items:center; justify-content:center; transition:transform 0.3s ease; }
+  .clock:hover { transform: scale(1.05); }
+  .hand { position:absolute; width:2px; background:#fff; transform-origin: bottom center; }
+  .hour { height:40px; }
+  .minute { height:60px; }
+  .second { height:70px; background:#ff6347; }
 
-    .spaceship-container { position:relative; height:200px; margin-top:30px; overflow:hidden;}
-    .spaceship { position:absolute; top:50%; left:-100px; width:80px; transform:translateY(-50%); }
+  .spaceship-container { position:relative; height:200px; margin-top:30px; overflow:hidden; }
+  .spaceship { position:absolute; top:50%; left:-100px; width:80px; transform:translateY(-50%); }
 
-    footer { text-align:center; padding:40px 20px; background: rgba(0,0,0,0.3); }
-  </style>
+  footer { text-align:center; padding:40px 20px; background:#111136; margin-top:50px; font-size:0.9rem; color:#aaa; }
+
+</style>
 </head>
 <body>
 
 <header>
   <h1>The Theory of Relativity</h1>
-  <p>Watch how time slows down for a moving spaceship. The faster it goes, the slower its clock moves compared to Earth.</p>
+  <p>Explore how time flows differently depending on motion and gravity. Watch interactive clocks and moving objects to see relativity in action.</p>
+  <button class="btn" onclick="scrollToSection('timeDilation')">Explore Time Dilation</button>
 </header>
 
-<section>
-  <h2>Time Dilation Animation</h2>
-  <p>The spaceship moves across the screen. Notice its clock slowing as it goes faster!</p>
-
+<section id="timeDilation">
+  <h2>Time Dilation</h2>
+  <p>Observe how time slows for a moving spaceship compared to Earth. Click the spaceship clock to increase speed and see the effect.</p>
+  
   <div class="clock-container">
-    <div class="clock" id="earthClock">Earth Clock</div>
-    <div class="clock" id="shipClock">Spaceship Clock</div>
+    <div class="clock" id="earthClock">Earth</div>
+    <div class="clock" id="shipClock">Spaceship</div>
   </div>
 
   <div class="spaceship-container">
-    <img src="https://i.imgur.com/xVfQJPI.png" class="spaceship" id="spaceship" alt="spaceship">
+    <img src="https://i.imgur.com/xVfQJPI.png" class="spaceship" id="spaceship" alt="Spaceship">
   </div>
 </section>
 
-<section style="background: rgba(0,0,0,0.2);">
+<section id="simultaneity" style="background: rgba(255,255,255,0.05);">
   <h2>Relative Simultaneity</h2>
-  <p>Events simultaneous on Earth may appear shifted for a moving observer.</p>
+  <p>Events that appear simultaneous on Earth may occur at different times for a moving observer.</p>
   <div class="clock-container">
-    <div class="clock" onclick="alert('Lightning strikes simultaneous on Earth. Moving observer sees them differently.')">Observer 1</div>
-    <div class="clock" onclick="alert('Moving observer perceives event times differently.')">Observer 2</div>
+    <div class="clock" onclick="alert('Lightning strikes appear simultaneous on Earth but are shifted for a moving observer.')">Observer 1</div>
+    <div class="clock" onclick="alert('Moving observer perceives events differently.')">Observer 2</div>
   </div>
 </section>
 
 <footer>
-  &copy; 2025 | Explore the Universe of Relativity
+  &copy; 2025 | Learn Relativity Interactively
 </footer>
 
 <script>
+  // Scroll to section smoothly
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({behavior: 'smooth'});
+  }
+
   const earthClock = document.getElementById('earthClock');
   const shipClock = document.getElementById('shipClock');
   const spaceship = document.getElementById('spaceship');
 
-  let speedFactor = 0.01; // starting speed (fraction of screen per tick)
-  const maxSpeedFactor = 0.05;
-  let position = -100; // start left outside screen
+  let speedFactor = 0.01;
+  const maxSpeed = 0.05;
+  let position = -100;
   const screenWidth = window.innerWidth;
 
-  // Create hands for clocks
   function createHands(clock) {
     ['hour','minute','second'].forEach(cls => {
       const hand = document.createElement('div');
@@ -84,8 +93,8 @@
   createHands(earthClock);
   createHands(shipClock);
 
-  // Update clocks every animation frame
   let startTime = Date.now();
+
   function animate() {
     const now = new Date();
     const elapsed = Date.now() - startTime;
@@ -95,26 +104,25 @@
     earthClock.querySelector('.minute').style.transform = `rotate(${6*now.getMinutes()}deg)`;
     earthClock.querySelector('.second').style.transform = `rotate(${6*now.getSeconds()}deg)`;
 
-    // Spaceship clock slows based on speedFactor
+    // Spaceship clock slows with speedFactor
     let slowedTime = new Date(startTime + elapsed*speedFactor);
     shipClock.querySelector('.hour').style.transform = `rotate(${30*slowedTime.getHours()+slowedTime.getMinutes()/2}deg)`;
     shipClock.querySelector('.minute').style.transform = `rotate(${6*slowedTime.getMinutes()}deg)`;
     shipClock.querySelector('.second').style.transform = `rotate(${6*slowedTime.getSeconds()}deg)`;
 
-    // Move spaceship across screen
+    // Move spaceship
     position += speedFactor*10;
-    if(position > screenWidth) { position = -100; speedFactor = 0.01; } // reset
+    if(position > screenWidth) { position=-100; speedFactor=0.01; }
     spaceship.style.left = position + 'px';
 
     requestAnimationFrame(animate);
   }
-
   animate();
 
-  // Increase speed on click
+  // Click spaceship clock to increase speed
   shipClock.addEventListener('click', () => {
     speedFactor += 0.01;
-    if(speedFactor > maxSpeedFactor) speedFactor = 0.01; // reset
+    if(speedFactor > maxSpeed) speedFactor = 0.01;
     alert(`Spaceship speed increased! Time moves slower: factor ${speedFactor.toFixed(2)}`);
   });
 </script>
